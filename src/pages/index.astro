@@ -1,145 +1,237 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
 ---
+
 <Layout title="Letterboxd">
+
+<header class="header">
+  <h2>Letterboxd</h2>
+  <button id="toggleTheme">Modo</button>
+</header>
 
 <main>
 
 <section class="hero">
-<h1>Letterboxd Web</h1>
-
+  <h1>Catálogo de Películas</h1>
 </section>
 
 <section class="search">
-
-<input 
-id="id="Buscaporonga"
-type="text" 
-placeholder="Buscar película"
-/>
-
+  <input id="Buscarr" type="text" placeholder="Buscar película" />
 </section>
 
 <section class="catalog">
+  <div class="grid">
 
-<div class="grid" id="movieGrid">
+    <div class="card" data-name="interstellar">
+      <span class="fav">♡</span>
+      <h3>Interstellar</h3>
+      <p>Ciencia ficción</p>
+    </div>
 
-<div class="card" data-name="interstellar">
-<h3>Interstellar</h3>
-<p>Ciencia ficción</p>
-</div>
+    <div class="card" data-name="inception">
+      <span class="fav">♡</span>
+      <h3>Inception</h3>
+      <p>Thriller</p>
+    </div>
 
-<div class="card" data-name="inception">
-<h3>Inception</h3>
-<p>Thriller</p>
-</div>
+    <div class="card" data-name="avatar">
+      <span class="fav">♡</span>
+      <h3>Avatar</h3>
+      <p>Aventura</p>
+    </div>
 
-<div class="card" data-name="avatar">
-<h3>Avatar</h3>
-<p>Aventura</p>
-</div>
+    <div class="card" data-name="joker">
+      <span class="fav">♡</span>
+      <h3>Joker</h3>
+      <p>Drama</p>
+    </div>
 
-<div class="card" data-name="joker">
-<h3>Joker</h3>
-<p>Drama</p>
-</div>
+    <div class="card" data-name="barbie">
+      <span class="fav">♡</span>
+      <h3>Barbie</h3>
+      <p>Comedia</p>
+    </div>
 
-<div class="card" data-name="barbie">
-<h3>Barbie</h3>
-<p>Comedia</p>
-</div>
+    <div class="card" data-name="oppenheimer">
+      <span class="fav">♡</span>
+      <h3>Oppenheimer</h3>
+      <p>Historia</p>
+    </div>
 
-<div class="card" data-name="oppenheimer">
-<h3>Oppenheimer</h3>
-<p>Historia</p>
-</div>
-
-</div>
-
+  </div>
 </section>
 
 </main>
 
 <style>
 
+body{
+  margin:0;
+  font-family:Arial;
+  transition:0.3s;
+}
+
+body.dark{
+  background: radial-gradient(circle at top, #2a003f, #000000);
+  color:white;
+}
+
+body.light{
+  background: radial-gradient(circle at top, #ffffff, #dcdcdc);
+  color:#111;
+}
+
+.header{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:15px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter:blur(10px);
+  background:rgba(0,0,0,0.3);
+}
+
+.header button{
+  border:none;
+  padding:8px 15px;
+  border-radius:20px;
+  cursor:pointer;
+}
+
 main{
-font-family:Arial;
-padding:40px;
+  padding:100px 40px 40px;
 }
 
 .hero{
-text-align:center;
-margin-bottom:40px;
+  text-align:center;
+  margin-bottom:30px;
 }
 
 .search{
-display:flex;
-justify-content:center;
-margin-bottom:30px;
+  display:flex;
+  justify-content:center;
+  margin-bottom:30px;
 }
 
 input{
-padding:10px;
-width:250px;
-border-radius:8px;
-border:1px solid #ccc;
+  padding:12px 20px;
+  width:280px;
+  border-radius:30px;
+  border:none;
+  outline:none;
+  background:#111;
+  color:white;
+}
+
+body.light input{
+  background:white;
+  color:black;
+  border:1px solid #ccc;
 }
 
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:25px;
 }
 
 .card{
-padding:20px;
-border:1px solid #ddd;
-border-radius:10px;
-text-align:center;
-transition:0.2s;
+  padding:25px;
+  border-radius:18px;
+  background: linear-gradient(145deg, #111, #1a1a1a);
+  border:1px solid rgba(255,255,255,0.05);
+  transition:0.3s;
+  position:relative;
+}
+
+body.light .card{
+  background:white;
+  border:1px solid #ddd;
 }
 
 .card:hover{
-transform:scale(1.05);
-background:#f5f5f5;
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 10px 30px rgba(180,0,255,0.5);
+}
+
+.card h3{
+  margin:0 0 8px;
+}
+
+.card p{
+  margin:0;
+  opacity:0.7;
+}
+
+.fav{
+  position:absolute;
+  top:12px;
+  right:15px;
+  cursor:pointer;
 }
 
 @media (max-width:600px){
-
-main{
-padding:20px;
-}
-
+  main{
+    padding:100px 20px 20px;
+  }
 }
 
 </style>
 
-<script>
+<script is:inline>
 
-const search = document.getElementById("Buscaporonga")
-const cards = document.querySelectorAll(".card")
+document.addEventListener("DOMContentLoaded", () => {
+
+document.body.classList.add("dark");
+
+const search = document.getElementById("Buscarr");
+const cards = document.querySelectorAll(".card");
+const toggle = document.getElementById("toggleTheme");
+const favs = document.querySelectorAll(".fav");
 
 search.addEventListener("input", () => {
 
-const value = search.value.toLowerCase()
+const value = search.value.toLowerCase();
 
 cards.forEach(card => {
-
-const name = card.dataset.name
+const name = card.dataset.name;
 
 if(name.includes(value)){
-card.style.display = "block"
+card.style.display = "";
 }else{
-card.style.display = "none"
+card.style.display = "none";
+}
+});
+
+});
+
+toggle.addEventListener("click", () => {
+
+if(document.body.classList.contains("dark")){
+document.body.classList.remove("dark");
+document.body.classList.add("light");
+}else{
+document.body.classList.remove("light");
+document.body.classList.add("dark");
 }
 
-})
+});
 
-})
+favs.forEach(fav => {
+fav.addEventListener("click", (e) => {
+e.stopPropagation();
+
+if(fav.innerText === "♡"){
+fav.innerText = "♥";
+}else{
+fav.innerText = "♡";
+}
+});
+});
+
+});
 
 </script>
 
