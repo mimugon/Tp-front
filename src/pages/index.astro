@@ -1,257 +1,47 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import SearchBar from "../components/SearchBar.astro";
+import MovieCard from "../components/MovieCard.astro";
+import "../styles/global.css";
 ---
 
 <Layout title="Letterboxd">
 
-<header class="header">
-  <h2>Letterboxd</h2>
-  <button id="toggleTheme">Modo</button>
-</header>
+<Header />
 
 <main>
 
 <section class="hero">
-  <h1>Catálogo de Películas</h1>
+  <h2>Catálogo de Películas</h2>
 </section>
 
-<section class="search">
-  <input id="Buscarr" type="text" placeholder="Buscar película" />
-</section>
+<SearchBar />
 
 <section class="catalog">
- <div class="grid">
+  <div class="grid">
 
-<div class="card" data-name="interstellar"><span class="fav">♡</span><h3>Interstellar</h3><p>Ciencia ficción</p><div class="stars"></div></div>
-<div class="card" data-name="inception"><span class="fav">♡</span><h3>Inception</h3><p>Thriller</p><div class="stars"></div></div>
-<div class="card" data-name="avatar"><span class="fav">♡</span><h3>Avatar</h3><p>Aventura</p><div class="stars"></div></div>
-<div class="card" data-name="joker"><span class="fav">♡</span><h3>Joker</h3><p>Drama</p><div class="stars"></div></div>
-<div class="card" data-name="barbie"><span class="fav">♡</span><h3>Barbie</h3><p>Comedia</p><div class="stars"></div></div>
-<div class="card" data-name="oppenheimer"><span class="fav">♡</span><h3>Oppenheimer</h3><p>Historia</p><div class="stars"></div></div>
+<MovieCard title="Interstellar" genre="Ciencia ficción" name="interstellar" />
+<MovieCard title="Inception" genre="Thriller" name="inception" />
+<MovieCard title="Avatar" genre="Aventura" name="avatar" />
+<MovieCard title="Joker" genre="Drama" name="joker" />
+<MovieCard title="Barbie" genre="Comedia" name="barbie" />
+<MovieCard title="Oppenheimer" genre="Historia" name="oppenheimer" />
 
-<div class="card" data-name="matrix"><span class="fav">♡</span><h3>The Matrix</h3><p>Ciencia ficción</p><div class="stars"></div></div>
-<div class="card" data-name="titanic"><span class="fav">♡</span><h3>Titanic</h3><p>Romance</p><div class="stars"></div></div>
-<div class="card" data-name="gladiator"><span class="fav">♡</span><h3>Gladiator</h3><p>Acción</p><div class="stars"></div></div>
-<div class="card" data-name="parasite"><span class="fav">♡</span><h3>Parasite</h3><p>Drama</p><div class="stars"></div></div>
-<div class="card" data-name="batman"><span class="fav">♡</span><h3>The Batman</h3><p>Acción</p><div class="stars"></div></div>
-<div class="card" data-name="fightclub"><span class="fav">♡</span><h3>Fight Club</h3><p>Drama</p><div class="stars"></div></div>
-<div class="card" data-name="godfather"><span class="fav">♡</span><h3>The Godfather</h3><p>Crimen</p><div class="stars"></div></div>
-<div class="card" data-name="avengers"><span class="fav">♡</span><h3>Avengers</h3><p>Acción</p><div class="stars"></div></div>
-<div class="card" data-name="harrypotter"><span class="fav">♡</span><h3>Harry Potter</h3><p>Fantasía</p><div class="stars"></div></div>
-<div class="card" data-name="toy story"><span class="fav">♡</span><h3>Toy Story</h3><p>Animación</p><div class="stars"></div></div>
+<MovieCard title="The Matrix" genre="Ciencia ficción" name="matrix" />
+<MovieCard title="Titanic" genre="Romance" name="titanic" />
+<MovieCard title="Gladiator" genre="Acción" name="gladiator" />
+<MovieCard title="Parasite" genre="Drama" name="parasite" />
+<MovieCard title="The Batman" genre="Acción" name="batman" />
+<MovieCard title="Fight Club" genre="Drama" name="fightclub" />
+<MovieCard title="The Godfather" genre="Crimen" name="godfather" />
+<MovieCard title="Avengers" genre="Acción" name="avengers" />
+<MovieCard title="Harry Potter" genre="Fantasía" name="harrypotter" />
+<MovieCard title="Toy Story" genre="Animación" name="toy story" />
 
-</div>
+  </div>
 </section>
 
 </main>
-
-<style>
-
-html, body{
-  min-height:100%;
-}
-
-body{
-  margin:0;
-  font-family:Arial;
-  transition:0.3s;
-}
-
-body.dark{
-  background: radial-gradient(circle at top, #2a003f, #000000);
-  color:white;
-}
-
-body.light{
-  background: radial-gradient(circle at top, #ffffff, #dcdcdc);
-  color:#111;
-}
-
-.header{
-  position:fixed;
-  top:0;
-  width:100%;
-  padding:15px 30px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  backdrop-filter:blur(10px);
-  background:rgba(0,0,0,0.3);
-}
-
-.header button{
-  border:none;
-  padding:8px 15px;
-  border-radius:20px;
-  cursor:pointer;
-}
-
-main{
-  padding:100px 40px 40px;
-}
-
-.hero{
-  text-align:center;
-  margin-bottom:30px;
-}
-
-.search{
-  display:flex;
-  justify-content:center;
-  margin-bottom:30px;
-}
-
-input{
-  padding:12px 20px;
-  width:280px;
-  border-radius:30px;
-  border:none;
-  outline:none;
-  background:#111;
-  color:white;
-}
-
-body.light input{
-  background:white;
-  color:black;
-  border:1px solid #ccc;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:25px;
-}
-
-.card{
-  padding:25px;
-  border-radius:18px;
-  background: linear-gradient(145deg, #111, #1a1a1a);
-  border:1px solid rgba(255,255,255,0.05);
-  transition:0.3s;
-  position:relative;
-}
-
-body.light .card{
-  background:white;
-  border:1px solid #ddd;
-}
-
-.card:hover{
-  transform:translateY(-8px) scale(1.02);
-  box-shadow:0 10px 30px rgba(180,0,255,0.5);
-}
-
-.card h3{
-  margin:0 0 8px;
-}
-
-.card p{
-  margin:0;
-  opacity:0.7;
-}
-
-.fav{
-  position:absolute;
-  top:12px;
-  right:15px;
-  cursor:pointer;
-}
-
-@media (max-width:600px){
-  main{
-    padding:100px 20px 20px;
-  }
-}
-.stars{
-  margin-top:10px;
-  font-size:18px;
-  letter-spacing:3px;
-  color:#555;
-}
-
-.star.active{
-  color:#a855f7;
-}
-
-</style>
-
-<script is:inline>
-
-document.addEventListener("DOMContentLoaded", () => {
-
-document.body.classList.add("dark");
-
-const search = document.getElementById("Buscarr");
-const cards = document.querySelectorAll(".card");
-const toggle = document.getElementById("toggleTheme");
-const favs = document.querySelectorAll(".fav");
-
-search.addEventListener("input", () => {
-
-const value = search.value.toLowerCase();
-
-cards.forEach(card => {
-const name = card.dataset.name;
-
-if(name.includes(value)){
-card.style.display = "";
-}else{
-card.style.display = "none";
-}
-});
-
-});
-
-toggle.addEventListener("click", () => {
-
-if(document.body.classList.contains("dark")){
-document.body.classList.remove("dark");
-document.body.classList.add("light");
-}else{
-document.body.classList.remove("light");
-document.body.classList.add("dark");
-}
-
-});
-
-favs.forEach(fav => {
-fav.addEventListener("click", (e) => {
-e.stopPropagation();
-
-if(fav.innerText === "♡"){
-fav.innerText = "♥";
-}else{
-fav.innerText = "♡";
-}
-});
-});
-
-/* ⭐ GENERAR ESTRELLAS */
-
-const starsContainers = document.querySelectorAll(".stars");
-
-starsContainers.forEach(container => {
-
-const rating = Math.floor(Math.random() * 5) + 1;
-
-for(let i=1; i<=5; i++){
-
-const star = document.createElement("span");
-star.innerText = "★";
-
-if(i <= rating){
-star.classList.add("active");
-}
-
-container.appendChild(star);
-
-}
-
-});
-
-});
-
-</script>
 
 </Layout>

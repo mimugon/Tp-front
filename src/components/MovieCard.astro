@@ -1,0 +1,22 @@
+---
+const { title, genre, name } = Astro.props;
+---
+
+<article class="card" data-name={name}>
+  <button class="fav" aria-label="Agregar a favoritos">♡</button>
+  <h3>{title}</h3>
+  <p>{genre}</p>
+  <div class="stars"></div>
+
+</article>
+<script is:inline>
+  document.querySelectorAll(".fav").forEach(btn => {
+  btn.addEventListener("click", () => {
+    btn.classList.toggle("active");
+
+    // animación
+    btn.classList.add("clicked");
+    setTimeout(() => btn.classList.remove("clicked"), 300);
+  });
+});
+<script/>

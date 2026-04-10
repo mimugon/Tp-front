@@ -1,0 +1,32 @@
+<header class="header">
+  <h1>Letterboxd</h1>
+  <nav>
+    <button id="toggleTheme" class="theme-toggle" aria-label="Cambiar tema">
+      <span class="icon sun">☀</span>
+      <span class="icon moon">🌙</span>
+    </button>
+  </nav>
+</header>
+
+<script is:inline>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const toggle = document.getElementById("toggleTheme");
+
+  // estado inicial
+  document.body.classList.add("dark");
+
+  toggle.addEventListener("click", () => {
+
+    const isDark = document.body.classList.contains("dark");
+
+    if(isDark){
+      document.body.classList.replace("dark","light");
+    }else{
+      document.body.classList.replace("light","dark");
+    }
+
+  });
+
+});
+</script>
