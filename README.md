@@ -1,5 +1,5 @@
 Mia Lourdes Gonzalez Barandica 
-4°C
+5°C
 
 El trabajo es de una catálogo de peliculas al estilo de leterboxd pero web. 
 
